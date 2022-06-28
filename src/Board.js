@@ -6,7 +6,7 @@
 
 const Board = () => {
   return (
-    <div>
+    <div className="Board">
       <h2>Board</h2>
       <ul>
         <li>id: 1 </li>
