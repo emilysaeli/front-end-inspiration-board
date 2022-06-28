@@ -1,3 +1,4 @@
+import "./Card.css";
 // requirements:
 // Create a new card for the selected board by filling out a form
 // Display an error message if invalid or incomplete information is provided
@@ -7,7 +8,7 @@
 
 const Card = () => {
   return (
-    <div>
+    <div className="Card">
       <h2>Card</h2>
       <ul>
         <li>id: 1</li>

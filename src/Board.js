@@ -1,3 +1,4 @@
+import "./Board.css";
 // requirements:
 // Create a new board by filling out a form
 // Display an error message if invalid or incomplete information is provided

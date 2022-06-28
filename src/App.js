@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Board from "./Board";
 import Card from "./Card";
+import "./App.css";
 
 function App() {
   const [cards, setCards] = useState([
