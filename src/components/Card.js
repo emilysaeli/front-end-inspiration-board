@@ -5,14 +5,13 @@
 // Delete a card
 // “+1” a card
 
-const Card = () => {
+const Card = (props) => {
   return (
     <div>
       <h2>Card</h2>
       <ul>
-        <li>id: 1</li>
-        <li>message: hello!</li>
-        <li>likes: 1</li>
+        <li>Message: {props.message}</li>
+        <li>Likes: {props.likes}</li>
       </ul>
     </div>
   );
