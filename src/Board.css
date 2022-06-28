@@ -1,0 +1,15 @@
+body {
+    display: flex
+}
+.Board {
+    margin: 10px;
+    border: 2px;
+    background-color: aquamarine;
+
+
+}
+
+main ul.card{
+    width: 50%;
+    margin: auto;
+  }
