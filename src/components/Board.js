@@ -4,23 +4,28 @@
 // Display all boards and ‘select’ a single board
 // Hide form to create boards
 import PropTypes from "prop-types";
-import Card from "./Card";
+// import Card from "./Card";
 
 // the Board component is a container component: it'll hold and manage Card data. it will pass this data into the presentational components (Card).
 
 const Board = (props) => {
-  const cardComponents = props.cards.map((card) => {
-    return (
-      <li>
-        <Card message={card.message} likes={card.likes}></Card>
-      </li>
-    );
-  });
+  // const cardComponents = props.cards.map((card) => {
+  //   return (
+  //     <li>
+  //       <Card message={card.message} likes={card.likes}></Card>
+  //     </li>
+  //   );
+  // });
 
   return (
     <div>
       <h2>Board</h2>
-      {cardComponents}
+      <ul>
+        <li>title: {props.title}</li>
+        <li>owner: {props.owner}</li>
+      </ul>
+
+      {/* {cardComponents} */}
     </div>
   );
 };
