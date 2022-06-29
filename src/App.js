@@ -1,8 +1,8 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import "./index.css";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import Board from "./components/Board";
-import Card from "./components/Card";
+// import Card from "./components/Card";
 
 function App() {
   // const [cards, setCards] = useState([]);
