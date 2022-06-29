@@ -3,6 +3,8 @@ import "./index.css";
 // import axios from "axios";
 import Board from "./components/Board";
 import NewBoardForm from "./components/NewBoardForm";
+// import Board from "./components/Board";
+import BoardList from "./components/BoardList";
 // import Card from "./components/Card";
 
 function App() {
@@ -27,13 +29,32 @@ function App() {
       likes: 3,
     },
   ];
+
+  const boardData = [
+    {
+      id: 0,
+      title: "the first board",
+      owner: "team sunshine",
+    },
+    {
+      id: 1,
+      title: "the second board",
+      owner: "gaby",
+    },
+  ];
+
   return (
-    <main>
-      <h1>Team Sunshine Inspiration Board</h1>
-      <Board cards={cardData}></Board>
-      {/* <Card></Card> */}
-      <NewBoardForm />
-    </main>
+    <section>
+      <header>
+        <h1>Team Sunshine Inspiration Board</h1>
+      </header>
+      <main>
+        <BoardList boards={boardData}></BoardList>
+        {/* <Board cards={cardData}></Board> */}
+        {/* <Card></Card> */}
+        <NewBoardForm />
+      </main>
+    </section>
   );
 }
 
