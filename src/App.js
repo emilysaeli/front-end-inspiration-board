@@ -26,8 +26,7 @@ function App() {
       likes: 3,
     },
   ];
-
-  const boardData = [
+  const [boardData, setBoardData] = useState([
     {
       id: 0,
       title: "the first board",
@@ -38,7 +37,18 @@ function App() {
       title: "the second board",
       owner: "gaby",
     },
-  ];
+  ]);
+
+  const addBoardData = (newBoard) => {
+    const newBoardList = [...boardData];
+
+    newBoardList.push({
+      title: newBoard.title,
+      owner: newBoard.owner,
+    });
+
+    setBoardData(newBoardList);
+  };
 
   return (
     <section>
@@ -47,7 +57,7 @@ function App() {
       </header>
       <main>
         <BoardList boards={boardData} cards={cardData} />
-        <NewBoardForm />
+        <NewBoardForm addBoardData={addBoardData} />
       </main>
     </section>
   );
