@@ -2,6 +2,7 @@ import "./index.css";
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 import Board from "./components/Board";
+import NewBoardForm from "./components/NewBoardForm";
 // import Card from "./components/Card";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       <h1>Team Sunshine Inspiration Board</h1>
       <Board cards={cardData}></Board>
       {/* <Card></Card> */}
+      <NewBoardForm />
     </main>
   );
 }
