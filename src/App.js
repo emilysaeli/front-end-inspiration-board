@@ -1,5 +1,5 @@
 import "./index.css";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import axios from "axios";
 import Board from "./components/Board";
 import NewBoardForm from "./components/NewBoardForm";
@@ -29,8 +29,7 @@ function App() {
       likes: 3,
     },
   ];
-
-  const boardData = [
+  const [boardData, setBoardData] = useState([
     {
       id: 0,
       title: "the first board",
@@ -41,7 +40,18 @@ function App() {
       title: "the second board",
       owner: "gaby",
     },
-  ];
+  ]);
+
+  const addBoardData = (newBoard) => {
+    const newBoardList = [...boardData];
+
+    newBoardList.push({
+      title: newBoard.title,
+      owner: newBoard.owner,
+    });
+
+    setBoardData(newBoardList);
+  };
 
   return (
     <section>
@@ -52,7 +62,7 @@ function App() {
         <BoardList boards={boardData}></BoardList>
         {/* <Board cards={cardData}></Board> */}
         {/* <Card></Card> */}
-        <NewBoardForm />
+        <NewBoardForm addBoardData={addBoardData} />
       </main>
     </section>
   );
