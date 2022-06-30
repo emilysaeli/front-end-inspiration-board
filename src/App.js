@@ -1,12 +1,26 @@
 import "./index.css";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 // import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm";
 import BoardList from "./components/BoardList";
+import Board from "./components/Board";
+
+const BACKENDURL = "https://team-sunshine.herokuapp.com/";
 
 function App() {
   // const [cards, setCards] = useState([]);
-  const cardData = [
+
+  const [currentBoard, setCurrentBoard] = useState(null);
+
+  const updateCurrentBoard = (id) => {
+    setCurrentBoard(id);
+    // axios call to get cards
+    // set current cards
+    // console.log(currentBoard);
+    console.log("board set");
+  };
+
+  const testCardData = [
     {
       id: 0,
       title: "card #1",
@@ -50,13 +64,20 @@ function App() {
     setBoardData(newBoardList);
   };
 
+  const [cardData, setCardData] = useState([]);
+
   return (
     <section>
       <header>
         <h1>Team Sunshine Inspiration Board</h1>
       </header>
       <main>
-        <BoardList boards={boardData} cards={cardData} />
+        <BoardList
+          boards={boardData}
+          cards={cardData}
+          setCurrentBoard={updateCurrentBoard}
+        />
+        <Board cards={testCardData} />
         <NewBoardForm addBoardData={addBoardData} />
       </main>
     </section>

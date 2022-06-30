@@ -1,16 +1,23 @@
 import Board from "./Board";
+import BoardListItem from "./BoardListItem";
 import PropTypes from "prop-types";
 
 const BoardList = (props) => {
   const boardComponents = props.boards.map((board) => {
     return (
       <li>
-        <Board
+        <BoardListItem
+          key={board.id}
+          id={board.id}
+          title={board.title}
+          setCurrentBoard={props.setCurrentBoard}
+        ></BoardListItem>
+        {/* <Board
           key={board.id}
           title={board.title}
           owner={board.owner}
           cards={props.cards}
-        ></Board>
+        ></Board> */}
       </li>
     );
   });
