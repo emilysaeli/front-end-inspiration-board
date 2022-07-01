@@ -13,7 +13,11 @@ const Board = (props) => {
     console.log(card.message);
     return (
       <li>
-        <Card message={card.message} likes={card.likes}></Card>
+        <Card
+          key={card.card_id}
+          message={card.message}
+          likes={card.likes}
+        ></Card>
       </li>
     );
   });

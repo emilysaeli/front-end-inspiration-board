@@ -1,57 +1,62 @@
 import "./index.css";
-import { useState, useSyncExternalStore } from "react";
-// import axios from "axios";
+import { useEffect, useState } from "react";
 import NewBoardForm from "./components/NewBoardForm";
 import BoardList from "./components/BoardList";
 import Board from "./components/Board";
+import axios from "axios";
 
-const BACKENDURL = "https://team-sunshine.herokuapp.com/";
+const BACKENDURL = "https://team-sunshine.herokuapp.com";
 
 function App() {
   // const [cards, setCards] = useState([]);
 
   const [currentBoard, setCurrentBoard] = useState(null);
+  const [currentTitle, setCurrentTitle] = useState(null);
+  const [currentOwner, setCurrentOwner] = useState(null);
 
   const updateCurrentBoard = (id) => {
+    axios
+      .get(`${BACKENDURL}/boards/${id}`)
+      .then((res) => {
+        const title = res.data.title;
+        const owner = res.data.owner;
+        const cards = res.data.cards.map((card) => {
+          return {
+            card_id: card.card_id,
+            message: card.message,
+            likes: card.likes_count,
+          };
+        });
+        setCurrentTitle(title);
+        setCurrentOwner(owner);
+        setCardData(cards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     setCurrentBoard(id);
-    // axios call to get cards
-    // set current cards
-    // console.log(currentBoard);
-    console.log("board set");
   };
 
-  const testCardData = [
-    {
-      id: 0,
-      title: "card #1",
-      message: "this is a test card!",
-      likes: 0,
-    },
-    {
-      id: 1,
-      title: "card #2",
-      message: "here's another test card!",
-      likes: 2,
-    },
-    {
-      id: 2,
-      title: "card #3",
-      message: "third card's the charm",
-      likes: 3,
-    },
-  ];
-  const [boardData, setBoardData] = useState([
-    {
-      id: 0,
-      title: "the first board",
-      owner: "team sunshine",
-    },
-    {
-      id: 1,
-      title: "the second board",
-      owner: "gaby",
-    },
-  ]);
+  const [boardData, setBoardData] = useState([]);
+
+  const getAllBoards = () => {
+    axios
+      .get(`${BACKENDURL}/boards`)
+      .then((res) => {
+        const newBoards = res.data.map((board) => {
+          return {
+            board_id: board.id,
+            title: board.title,
+            owner: board.owner,
+          };
+        });
+        setBoardData(newBoards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(getAllBoards, []);
 
   const addBoardData = (newBoard) => {
     const newBoardList = [...boardData];
@@ -77,7 +82,7 @@ function App() {
           cards={cardData}
           setCurrentBoard={updateCurrentBoard}
         />
-        <Board cards={testCardData} />
+        <Board title={currentTitle} owner={currentOwner} cards={cardData} />
         <NewBoardForm addBoardData={addBoardData} />
       </main>
     </section>
