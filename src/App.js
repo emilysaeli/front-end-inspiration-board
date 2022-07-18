@@ -58,15 +58,36 @@ function App() {
   };
   useEffect(getAllBoards, []);
 
-  const addBoardData = (newBoard) => {
-    const newBoardList = [...boardData];
+  const addBoardData = (boardinfo) => {
+    axios
+      .post(`${BACKENDURL}/boards`, boardinfo)
+      .then((res) => {
+        getAllBoards();
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-    newBoardList.push({
-      title: newBoard.title,
-      owner: newBoard.owner,
-    });
+    //   const newBoardList = [...boardData];
 
-    setBoardData(newBoardList);
+    //   newBoardList.push({
+    //     title: newBoard.title,
+    //     owner: newBoard.owner,
+    //   });
+
+    //   setBoardData(newBoardList);
+
+    // axios.post('/user', {
+    //   firstName: 'Fred',
+    //   lastName: 'Flintstone'
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   };
 
   const [cardData, setCardData] = useState([]);
