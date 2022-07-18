@@ -93,12 +93,13 @@ function App() {
   const [cardData, setCardData] = useState([]);
 
   return (
-    <section>
+    <section id="App">
       <header>
         <h1>Team Sunshine Inspiration Board</h1>
       </header>
       <main>
         <BoardList
+          currentBoard={currentBoard}
           boards={boardData}
           cards={cardData}
           setCurrentBoard={updateCurrentBoard}

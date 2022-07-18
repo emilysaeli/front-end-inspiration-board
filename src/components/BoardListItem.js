@@ -2,7 +2,16 @@
 On click, it sets the state of CurrentBoard to this board's ID */
 const BoardListItem = (props) => {
   const setBoardtoThis = () => props.setCurrentBoard(props.id);
-  return <button onClick={setBoardtoThis}>{props.title}</button>;
+  return (
+    <button
+      className={
+        props.active ? "BoardListItem BoardListItem--active" : "BoardListItem"
+      }
+      onClick={setBoardtoThis}
+    >
+      {props.title}
+    </button>
+  );
 };
 
 export default BoardListItem;

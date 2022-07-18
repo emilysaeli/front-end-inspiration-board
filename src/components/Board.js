@@ -23,13 +23,13 @@ const Board = (props) => {
   });
 
   return (
-    <div>
-      <h2>Board</h2>
+    <div className="board">
+      <h2>{props.title}</h2>
+      <p>owner: {props.owner}</p>
       <ul>
-        <li>title: {props.title}</li>
-        <li>owner: {props.owner}</li>
+        {/* <li>title: {props.title}</li> */}
+        {cardComponents}
       </ul>
-      {cardComponents}
     </div>
   );
 };

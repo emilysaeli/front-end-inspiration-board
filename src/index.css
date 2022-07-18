@@ -1,13 +1,149 @@
+/* full page body, for universal backgrounds/fonts/etc */
+
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #468966;
+  justify-content: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  width: 100%;
+}
+
+/* #App refers to what is returned by App.js */
+#App {
+  justify-content: space-between;
+}
+
+#App header {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border: 4px solid black;
+}
+
+#App > main {
+  /* padding: 10px; */
+  margin: 10px;
+  border: 4px dotted black;
+  background-color: #468966;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+#App > main > * {
+  margin: 5px;
+}
+
+.board {
+  padding: 10px;
+  border: 2px;
+  background-color: #B64926;
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+/* .board h2 {
+  align-self: center;
+} */
+.board ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  /* flex-direction: column; */
+}
+
+.board ul li {
+  display:block;
+  padding: 0;
+  margin: 0;
+  width: fit-content;
+  margin: auto;
+}
+
+.Card {
+  background-color: #FFF0A5;
+  box-shadow: 5px 5px 10px;
+  margin: 10px;
+  padding: 5px;
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+
+
+.BoardList {
+  background-color: #B64926;
+}
+.BoardList h2 {
+  margin-left: 10px;
+}
+
+.BoardList ul {
+  background-color: #8E2800;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 10px;
+  align-items: space-between;
+
+  height: 200px;
+  overflow: auto;
+}
+
+.BoardList ul li {
+  margin: 5px;
+}
+/* 
+.BoardList ul li button {
+  font-size: medium;
+  padding: 5px;
+  min-width: 100%;
+  background-color: #FFF0A5;
+  border: none;
+  border-radius: 10px;
+} */
+.BoardListItem {
+  font-size: medium;
+  padding: 5px;
+  min-width: 100%;
+  background-color: #FFF0A5;
+  border: none;
+  border-radius: 10px;
+}
+.BoardListItem--active {
+  font-size: medium;
+  padding: 5px;
+  min-width: 100%;
+  background-color: #FFB03B;
+  border: none;
+  border-radius: 10px;
+}
+
+.NewBoardForm {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  border: 2px double black;
+  padding: 5px;
+}
+
+.NewBoardForm input {
+  width: 90%;
+  margin: auto;
+  margin-top: 5px;
+
+}
+.NewBoardForm input[type=submit] {
+  width: 50%;
 }

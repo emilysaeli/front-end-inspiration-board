@@ -25,7 +25,8 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form className="NewBoardForm" onSubmit={onFormSubmit}>
+      <h2>Create a New Board</h2>
       <label htmlFor="title">Title</label>
       <input
         type="text"
