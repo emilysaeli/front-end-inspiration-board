@@ -167,7 +167,7 @@ function App() {
             paddingBottom: "1rem",
           }}
         >
-          | <Link to="/about">About Us</Link> |<Link to="/">Boards</Link> |
+          <Link to="/">Boards</Link> | <Link to="/about">About</Link>
         </nav>
       </header>
       <main>
