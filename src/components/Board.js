@@ -20,6 +20,7 @@ const Board = (props) => {
           message={card.message}
           likes={card.likes}
           likeCardCallback={props.likeCardCallback}
+          deleteCardCallback={props.deleteCardCallback}
         ></Card>
       </li>
     );

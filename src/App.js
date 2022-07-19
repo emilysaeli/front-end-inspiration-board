@@ -99,6 +99,18 @@ function App() {
       });
   };
 
+  const deleteCard = (cardID) => {
+    axios
+      .delete(`${BACKENDURL}/cards/${cardID}`)
+      .then((res) => {
+        updateCurrentBoard(currentBoard);
+        console.log(`deleting card ${cardID}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <section id="App">
       <header>
@@ -117,6 +129,7 @@ function App() {
           cards={cardData}
           likeCardCallback={likeCard}
           addCardCallback={addCardData}
+          deleteCardCallback={deleteCard}
         />
         <NewBoardForm addBoardData={addBoardData} />
       </main>
