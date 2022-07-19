@@ -24,6 +24,10 @@ const Board = (props) => {
     );
   });
 
+  const deleteMe = () => {
+    props.deleteCallback(props.boardId);
+  };
+
   return (
     <div className="board">
       <h2>{props.title}</h2>
@@ -32,6 +36,7 @@ const Board = (props) => {
         {/* <li>title: {props.title}</li> */}
         {cardComponents}
       </ul>
+      <button onClick={deleteMe}>Delete</button>
     </div>
   );
 };

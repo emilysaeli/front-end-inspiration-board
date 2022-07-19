@@ -105,6 +105,21 @@ function App() {
       });
   };
 
+  const deleteBoard = (id) => {
+    axios
+      .delete(`${BACKENDURL}/boards/${id}`)
+      .then(() => {
+        getAllBoards();
+        setCurrentBoard(null);
+        setCurrentTitle(null);
+        setCurrentOwner(null);
+        setCardData([]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <section id="App">
       <header>
@@ -120,8 +135,10 @@ function App() {
         <Board
           title={currentTitle}
           owner={currentOwner}
+          boardId={currentBoard}
           cards={cardData}
           likeCardCallback={likeCard}
+          deleteCallback={deleteBoard}
         />
         <NewBoardForm addBoardData={addBoardData} />
       </main>
