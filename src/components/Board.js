@@ -15,8 +15,10 @@ const Board = (props) => {
       <li>
         <Card
           key={card.card_id}
+          cardID={card.card_id}
           message={card.message}
           likes={card.likes}
+          likeCardCallback={props.likeCardCallback}
         ></Card>
       </li>
     );

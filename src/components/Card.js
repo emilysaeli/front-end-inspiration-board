@@ -4,6 +4,7 @@
 // Display all cards of a selected board
 // Delete a card
 // “+1” a card
+import LikeButton from "./LikeButton";
 
 const Card = (props) => {
   return (
@@ -15,6 +16,10 @@ const Card = (props) => {
         <li>Message: {props.message}</li>
         <li>Likes: {props.likes}</li>
       </ul> */}
+      <LikeButton
+        likeCardCallback={props.likeCardCallback}
+        cardID={props.cardID}
+      ></LikeButton>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const NewBoardForm = (props) => {
   const [formData, setFormData] = useState({
@@ -25,24 +25,29 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form className="NewBoardForm" onSubmit={onFormSubmit}>
-      <h2>Create a New Board</h2>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        value={formData.title}
-        onChange={onFormChange}
-      ></input>
-      <label htmlFor="owner">Owner</label>
-      <input
-        type="text"
-        name="owner"
-        value={formData.owner}
-        onChange={onFormChange}
-      ></input>
-      <input type="submit" value="Add Board"></input>
-    </form>
+    <section className="NewBoardForm">
+      <header>
+        <h2>Create a New Board</h2>
+        <button>Hide ▼ Show ▲</button>
+      </header>
+      <form onSubmit={onFormSubmit}>
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          name="title"
+          value={formData.title}
+          onChange={onFormChange}
+        ></input>
+        <label htmlFor="owner">Owner</label>
+        <input
+          type="text"
+          name="owner"
+          value={formData.owner}
+          onChange={onFormChange}
+        ></input>
+        <input type="submit" value="Add Board"></input>
+      </form>
+    </section>
   );
 };
 

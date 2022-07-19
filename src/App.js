@@ -92,6 +92,19 @@ function App() {
 
   const [cardData, setCardData] = useState([]);
 
+  const likeCard = (cardID) => {
+    console.log(`liking card ${cardID}`);
+    axios
+      .patch(`${BACKENDURL}/cards/${cardID}/like`)
+      .then((res) => {
+        console.log(res);
+        updateCurrentBoard(currentBoard);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <section id="App">
       <header>
@@ -104,7 +117,12 @@ function App() {
           cards={cardData}
           setCurrentBoard={updateCurrentBoard}
         />
-        <Board title={currentTitle} owner={currentOwner} cards={cardData} />
+        <Board
+          title={currentTitle}
+          owner={currentOwner}
+          cards={cardData}
+          likeCardCallback={likeCard}
+        />
         <NewBoardForm addBoardData={addBoardData} />
       </main>
     </section>
