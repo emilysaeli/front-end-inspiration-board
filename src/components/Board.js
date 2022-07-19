@@ -5,12 +5,13 @@
 // Hide form to create boards
 // import PropTypes from "prop-types";
 import Card from "./Card";
+import NewCardForm from "./NewCardForm";
 
 // the Board component is a container component: it'll hold and manage Card data. it will pass this data into the presentational components (Card).
 
 const Board = (props) => {
   const cardComponents = props.cards.map((card) => {
-    console.log(card.message);
+    // console.log(card.message);
     return (
       <li>
         <Card
@@ -37,6 +38,7 @@ const Board = (props) => {
         {cardComponents}
       </ul>
       <button onClick={deleteMe}>Delete</button>
+      <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
     </div>
   );
 };
