@@ -73,6 +73,8 @@ function App() {
 
   const addCardData = (cardInfo) => {
     console.log("adding card");
+    // cardInfo: {"message":msg}
+    cardInfo["board_id"] = currentBoard;
     axios
       .post(`${BACKENDURL}/cards`, cardInfo)
       .then((res) => {
@@ -117,7 +119,6 @@ function App() {
           addCardCallback={addCardData}
         />
         <NewBoardForm addBoardData={addBoardData} />
-        {/* <NewCardForm addCardData={addCardData} /> */}
       </main>
     </section>
   );
