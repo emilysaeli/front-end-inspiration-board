@@ -99,6 +99,7 @@ function App() {
       });
   };
 
+<<<<<<< Updated upstream
   const deleteBoard = (id) => {
     axios
       .delete(`${BACKENDURL}/boards/${id}`)
@@ -113,6 +114,9 @@ function App() {
         console.log(err);
       });
   };
+=======
+  const [boardFormVisible, setBoardFormVisible] = useState(true);
+>>>>>>> Stashed changes
 
   return (
     <section id="App">
