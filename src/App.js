@@ -5,6 +5,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import BoardList from "./components/BoardList";
 import Board from "./components/Board";
 import axios from "axios";
+import { Routes, Route, Link } from "react-router-dom";
 
 const BACKENDURL = "https://team-sunshine.herokuapp.com";
 
@@ -129,10 +130,42 @@ function App() {
       });
   };
 
+  function Home() {
+    return (
+      <>
+        {/* <main>
+          <h2>Welcome to the homepage!</h2>
+          <p>You can do this, I believe in you.</p>
+        </main> */}
+        <nav>
+          <Link to="/about">About</Link>
+        </nav>
+      </>
+    );
+  }
+
+  function About() {
+    return (
+      <>
+        <main>
+          {/* <h2>Who are we?</h2>
+          <p>That feels like an existential question, don't you think?</p> */}
+        </main>
+        <nav>
+          <Link to="/">Home</Link>
+        </nav>
+      </>
+    );
+  }
+
   return (
     <section id="App">
       <header>
         <h1>Team Sunshine Inspiration Board</h1>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+        </Routes>
       </header>
       <main>
         <BoardList
