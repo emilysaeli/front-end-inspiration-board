@@ -99,7 +99,6 @@ function App() {
       });
   };
 
-<<<<<<< Updated upstream
   const deleteBoard = (id) => {
     axios
       .delete(`${BACKENDURL}/boards/${id}`)
@@ -114,9 +113,10 @@ function App() {
         console.log(err);
       });
   };
-=======
   const [boardFormVisible, setBoardFormVisible] = useState(true);
->>>>>>> Stashed changes
+  const toggleFormVisible = () => {
+    setBoardFormVisible(!boardFormVisible);
+  };
 
   return (
     <section id="App">
@@ -139,7 +139,11 @@ function App() {
           deleteCallback={deleteBoard}
           addCardCallback={addCardData}
         />
-        <NewBoardForm addBoardData={addBoardData} />
+        <NewBoardForm
+          addBoardData={addBoardData}
+          boardFormVisible={boardFormVisible}
+          toggleFormVisible={toggleFormVisible}
+        />
       </main>
     </section>
   );

@@ -138,6 +138,7 @@ body {
 .NewBoardForm {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
+  align-self: start;
   display: flex;
   flex-direction: column;
   border: 2px double black;
@@ -158,4 +159,17 @@ body {
 }
 .NewBoardForm input[type=submit] {
   width: 50%;
+}
+
+.NewBoardForm--show form {
+  display: block;
+}
+
+.NewBoardForm--hide form {
+  display: none;
+}
+
+.NewBoardForm header button {
+  height: max-content;
+  align-self: center;
 }

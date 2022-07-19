@@ -24,11 +24,16 @@ const NewBoardForm = (props) => {
     setFormData({ title: "", owner: "" });
   };
 
+  const visibleButtonText = props.boardFormVisible ? "Hide ▼" : "Show ▲";
+  const formStatus = props.boardFormVisible
+    ? "NewBoardForm NewBoardForm--show"
+    : "NewBoardForm NewBoardForm--hide";
+
   return (
-    <section className="NewBoardForm">
+    <section className={formStatus}>
       <header>
         <h2>Create a New Board</h2>
-        <button>Hide ▼ Show ▲</button>
+        <button onClick={props.toggleFormVisible}>{visibleButtonText}</button>
       </header>
       <form onSubmit={onFormSubmit}>
         <label htmlFor="title">Title</label>
