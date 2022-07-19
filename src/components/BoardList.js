@@ -5,9 +5,8 @@ const BoardList = (props) => {
   const boardComponents = props.boards.map((board) => {
     if (board.board_id === props.currentBoard) {
       return (
-        <li>
+        <li key={board.board_id}>
           <BoardListItem
-            key={board.board_id}
             active={true}
             id={board.board_id}
             title={board.title}
@@ -17,9 +16,8 @@ const BoardList = (props) => {
       );
     } else {
       return (
-        <li>
+        <li key={board.board_id}>
           <BoardListItem
-            key={board.board_id}
             active={false}
             id={board.board_id}
             title={board.title}

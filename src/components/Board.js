@@ -13,9 +13,8 @@ const Board = (props) => {
   const cardComponents = props.cards.map((card) => {
     // console.log(card.message);
     return (
-      <li>
+      <li key={card.card_id}>
         <Card
-          key={card.card_id}
           cardID={card.card_id}
           message={card.message}
           likes={card.likes}

@@ -131,7 +131,7 @@ body {
   padding: 5px;
   min-width: 100%;
   background-color: #FFB03B;
-  border: none;
+  border: 1px solid #FFF0A5;
   border-radius: 10px;
 }
 
@@ -172,4 +172,10 @@ body {
 .NewBoardForm header button {
   height: max-content;
   align-self: center;
+}
+
+.NewCardForm {
+  background-color: #FFB03B;
+  padding: 5px;
+  margin: 5px;
 }
