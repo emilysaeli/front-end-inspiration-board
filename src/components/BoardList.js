@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const BoardList = (props) => {
   const boardComponents = props.boards.map((board) => {
+    // <Link to={`/boards/${board.board_id}`}>
     if (board.board_id === props.currentBoard) {
       return (
         <li key={board.board_id}>
@@ -26,6 +27,7 @@ const BoardList = (props) => {
         </li>
       );
     }
+    // </Link>
   });
 
   return (
