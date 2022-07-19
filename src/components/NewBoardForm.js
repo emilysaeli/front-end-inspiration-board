@@ -50,7 +50,17 @@ const NewBoardForm = (props) => {
           value={formData.owner}
           onChange={onFormChange}
         ></input>
-        <input type="submit" value="Add Board"></input>
+        <input
+          type="submit"
+          value="Add Board"
+          disabled={!formData.owner || !formData.title}
+        ></input>
+        <p>
+          {" "}
+          {formData.owner && formData.title
+            ? ""
+            : "Board must have a name and title"}
+        </p>
       </form>
     </section>
   );

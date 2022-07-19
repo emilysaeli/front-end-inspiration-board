@@ -36,7 +36,13 @@ const NewCardForm = (props) => {
           value={formData.message}
           onChange={onFormChange}
         ></input>
-        <input type="submit" value="Add Card"></input>
+        <input
+          type="submit"
+          value={
+            formData.message.length >= 40 ? "Message too long" : "Add Card"
+          }
+          disabled={!formData.message || formData.message.length >= 40}
+        ></input>
       </form>
     </section>
   );

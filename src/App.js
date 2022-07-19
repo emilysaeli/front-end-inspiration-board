@@ -12,6 +12,7 @@ function App() {
   const [currentBoard, setCurrentBoard] = useState(null);
   const [currentTitle, setCurrentTitle] = useState(null);
   const [currentOwner, setCurrentOwner] = useState(null);
+  const [apiError, setApiError] = useState(null);
 
   const updateCurrentBoard = (id) => {
     axios
@@ -81,8 +82,9 @@ function App() {
         updateCurrentBoard(currentBoard);
         console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        setApiError(err.message);
+        console.error(err.message);
       });
   };
 
