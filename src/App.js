@@ -1,6 +1,7 @@
 import "./index.css";
 import { useEffect, useState } from "react";
 import NewBoardForm from "./components/NewBoardForm";
+// import NewCardForm from "./components/NewCardForm";
 import BoardList from "./components/BoardList";
 import Board from "./components/Board";
 import axios from "axios";
@@ -8,8 +9,6 @@ import axios from "axios";
 const BACKENDURL = "https://team-sunshine.herokuapp.com";
 
 function App() {
-  // const [cards, setCards] = useState([]);
-
   const [currentBoard, setCurrentBoard] = useState(null);
   const [currentTitle, setCurrentTitle] = useState(null);
   const [currentOwner, setCurrentOwner] = useState(null);
@@ -71,29 +70,24 @@ function App() {
         console.log(error);
         setErrorMessage(error);
       });
-
-    //   const newBoardList = [...boardData];
-
-    //   newBoardList.push({
-    //     title: newBoard.title,
-    //     owner: newBoard.owner,
-    //   });
-
-    //   setBoardData(newBoardList);
-
-    // axios.post('/user', {
-    //   firstName: 'Fred',
-    //   lastName: 'Flintstone'
-    // })
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
   };
 
   const [cardData, setCardData] = useState([]);
+
+  const addCardData = (cardInfo) => {
+    console.log("adding card");
+    // cardInfo: {"message":msg}
+    cardInfo["board_id"] = currentBoard;
+    axios
+      .post(`${BACKENDURL}/cards`, cardInfo)
+      .then((res) => {
+        updateCurrentBoard(currentBoard);
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const likeCard = (cardID) => {
     console.log(`liking card ${cardID}`);
@@ -125,6 +119,7 @@ function App() {
           owner={currentOwner}
           cards={cardData}
           likeCardCallback={likeCard}
+          addCardCallback={addCardData}
         />
         <NewBoardForm addBoardData={addBoardData} />
         {/* {errorMessage? errorMessage : ""} */}
