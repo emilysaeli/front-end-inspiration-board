@@ -13,6 +13,7 @@ function App() {
   const [currentBoard, setCurrentBoard] = useState(null);
   const [currentTitle, setCurrentTitle] = useState(null);
   const [currentOwner, setCurrentOwner] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const updateCurrentBoard = (id) => {
     axios
@@ -33,6 +34,7 @@ function App() {
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessage(error);
       });
     setCurrentBoard(id);
   };
@@ -67,6 +69,7 @@ function App() {
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessage(error);
       });
 
     //   const newBoardList = [...boardData];
@@ -124,6 +127,7 @@ function App() {
           likeCardCallback={likeCard}
         />
         <NewBoardForm addBoardData={addBoardData} />
+        {/* {errorMessage? errorMessage : ""} */}
       </main>
     </section>
   );
