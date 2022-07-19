@@ -5,6 +5,7 @@
 // Delete a card
 // “+1” a card
 import LikeButton from "./LikeButton";
+import DeleteButton from "./DeleteButton";
 
 const Card = (props) => {
   return (
@@ -20,6 +21,10 @@ const Card = (props) => {
         likeCardCallback={props.likeCardCallback}
         cardID={props.cardID}
       ></LikeButton>
+      <DeleteButton
+        deleteCardCallback={props.deleteCardCallback}
+        cardID={props.cardID}
+      ></DeleteButton>
     </div>
   );
 };

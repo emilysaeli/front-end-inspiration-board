@@ -117,6 +117,17 @@ function App() {
   const toggleFormVisible = () => {
     setBoardFormVisible(!boardFormVisible);
   };
+  const deleteCard = (cardID) => {
+    axios
+      .delete(`${BACKENDURL}/cards/${cardID}`)
+      .then((res) => {
+        updateCurrentBoard(currentBoard);
+        console.log(`deleting card ${cardID}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <section id="App">
@@ -138,6 +149,7 @@ function App() {
           likeCardCallback={likeCard}
           deleteCallback={deleteBoard}
           addCardCallback={addCardData}
+          deleteCardCallback={deleteCard}
         />
         <NewBoardForm
           addBoardData={addBoardData}
