@@ -170,6 +170,9 @@ function App() {
           <Link to="/">Boards</Link> | <Link to="/about">About</Link>
         </nav>
       </header>
+      <section className="about">
+        <Outlet />
+      </section>
       <main>
         <BoardList
           currentBoard={currentBoard}
@@ -187,13 +190,13 @@ function App() {
           addCardCallback={addCardData}
           deleteCardCallback={deleteCard}
         />
+
         <NewBoardForm
           addBoardData={addBoardData}
           boardFormVisible={boardFormVisible}
           toggleFormVisible={toggleFormVisible}
         />
       </main>
-      <Outlet />
     </section>
   );
 }

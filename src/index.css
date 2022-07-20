@@ -42,6 +42,13 @@ body {
   margin: 5px;
 }
 
+.about {
+  grid-column-start: 2;
+  margin: 10px;
+  border: 4px dotted black;
+  background-color: #FFB03B;
+}
+
 .board {
   padding: 10px;
   border: 2px;
