@@ -26,10 +26,11 @@ const NewCardForm = (props) => {
   return (
     <section className="NewCardForm">
       <header>
-        <h2>Create a New Card</h2>
+        <h2>Add a New Card</h2>
+        <p>to: {props.title}</p>
       </header>
       <form onSubmit={onFormSubmit}>
-        <label htmlFor="message">Message</label>
+        <label htmlFor="message">Message: </label>
         <input
           type="text"
           name="message"

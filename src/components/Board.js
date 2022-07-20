@@ -11,6 +11,14 @@ import CardSortMenu from "./CardSortMenu";
 // the Board component is a container component: it'll hold and manage Card data. it will pass this data into the presentational components (Card).
 
 const Board = (props) => {
+  if (props.boardId === null) {
+    return (
+      <div className="board">
+        <p>Select a board on the left to see it's contents!</p>
+      </div>
+    );
+  }
+
   const cardComponents = props.cards.map((card) => {
     // console.log(card.message);
     return (
@@ -41,8 +49,11 @@ const Board = (props) => {
         {/* <li>title: {props.title}</li> */}
         {cardComponents}
       </ul>
-      <button onClick={deleteMe}>Delete</button>
-      <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
+      <button onClick={deleteMe}>Delete this board</button>
+      <NewCardForm
+        title={props.title}
+        addCardCallback={props.addCardCallback}
+      ></NewCardForm>
     </div>
   );
 };
