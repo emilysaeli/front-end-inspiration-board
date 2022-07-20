@@ -1,11 +1,13 @@
 const About = () => {
   return (
     <main>
-      <h1>About Team Sunshine</h1>
-      <p>
-        this is example text. here we can list out team member names and link to
-        our githubs or personal portfolios
-      </p>
+      <h1>Introducing: Team Sunshine</h1>
+      <ul>
+        <li>🌻 Morgan Heuer AKA Actual Sunshine 🌻</li>
+        <li>🌻 Emily Saeli AKA the Project Momager 🌻</li>
+        <li>🌻 Gaby Webb AKA the Secret MemeLord 🌻</li>
+        <li>🌻 Sarah Williams AKA the Genius 🌻</li>
+      </ul>
     </main>
   );
 };

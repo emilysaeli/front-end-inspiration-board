@@ -2,7 +2,7 @@ const LikeButton = (props) => {
   const likeThisCard = () => {
     props.likeCardCallback(props.cardID);
   };
-  return <button onClick={likeThisCard}>+1</button>;
+  return <button onClick={likeThisCard}>🌻</button>;
 };
 
 export default LikeButton;
