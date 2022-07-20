@@ -57,6 +57,12 @@ body {
 /* .board h2 {
   align-self: center;
 } */
+/* .board header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+} */
+
 .board ul {
   display: flex;
   flex-wrap: wrap;

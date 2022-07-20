@@ -37,7 +37,7 @@ function App() {
   };
 
   const updateSortBy = (value) => {
-    // setCardSort(value);
+    setCardSort(value);
     console.log(`the value passed in was ${value}`);
     // console.log(`the state is ${cardSort}`);
     console.log(sortFunctions[value]);
@@ -62,6 +62,8 @@ function App() {
         });
         setCurrentTitle(title);
         setCurrentOwner(owner);
+
+        cards.sort(sortFunctions[cardSort]);
         setCardData(cards);
       })
       .catch((error) => {

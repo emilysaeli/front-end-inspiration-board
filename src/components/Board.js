@@ -32,13 +32,15 @@ const Board = (props) => {
 
   return (
     <div className="board">
-      <h2>{props.title}</h2>
-      <p>owner: {props.owner}</p>
+      <header>
+        <h2>{props.title}</h2>
+        <p>owner: {props.owner}</p>
+        <CardSortMenu cardSortCallback={props.cardSortCallback}></CardSortMenu>
+      </header>
       <ul>
         {/* <li>title: {props.title}</li> */}
         {cardComponents}
       </ul>
-      <CardSortMenu cardSortCallback={props.cardSortCallback}></CardSortMenu>
       <button onClick={deleteMe}>Delete</button>
       <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
     </div>
