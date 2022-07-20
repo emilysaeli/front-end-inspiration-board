@@ -6,6 +6,7 @@
 // import PropTypes from "prop-types";
 import Card from "./Card";
 import NewCardForm from "./NewCardForm";
+import CardSortMenu from "./CardSortMenu";
 
 // the Board component is a container component: it'll hold and manage Card data. it will pass this data into the presentational components (Card).
 
@@ -37,6 +38,7 @@ const Board = (props) => {
         {/* <li>title: {props.title}</li> */}
         {cardComponents}
       </ul>
+      <CardSortMenu cardSortCallback={props.cardSortCallback}></CardSortMenu>
       <button onClick={deleteMe}>Delete</button>
       <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
     </div>
