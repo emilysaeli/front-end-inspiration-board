@@ -6,10 +6,19 @@
 // import PropTypes from "prop-types";
 import Card from "./Card";
 import NewCardForm from "./NewCardForm";
+import CardSortMenu from "./CardSortMenu";
 
 // the Board component is a container component: it'll hold and manage Card data. it will pass this data into the presentational components (Card).
 
 const Board = (props) => {
+  if (props.boardId === null) {
+    return (
+      <div className="board">
+        <p>Select a board on the left to see it's contents!</p>
+      </div>
+    );
+  }
+
   const cardComponents = props.cards.map((card) => {
     // console.log(card.message);
     return (
@@ -31,14 +40,20 @@ const Board = (props) => {
 
   return (
     <div className="board">
-      <h2>{props.title}</h2>
-      <p>owner: {props.owner}</p>
+      <header>
+        <h2>{props.title}</h2>
+        <p>owner: {props.owner}</p>
+        <CardSortMenu cardSortCallback={props.cardSortCallback}></CardSortMenu>
+      </header>
       <ul>
         {/* <li>title: {props.title}</li> */}
         {cardComponents}
       </ul>
-      <button onClick={deleteMe}>Delete</button>
-      <NewCardForm addCardCallback={props.addCardCallback}></NewCardForm>
+      <button onClick={deleteMe}>Delete this board</button>
+      <NewCardForm
+        title={props.title}
+        addCardCallback={props.addCardCallback}
+      ></NewCardForm>
     </div>
   );
 };

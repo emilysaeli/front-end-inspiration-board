@@ -26,17 +26,24 @@ const NewCardForm = (props) => {
   return (
     <section className="NewCardForm">
       <header>
-        <h2>Create a New Card</h2>
+        <h2>Add a New Card</h2>
+        <p>to: {props.title}</p>
       </header>
       <form onSubmit={onFormSubmit}>
-        <label htmlFor="message">Message</label>
+        <label htmlFor="message">Message: </label>
         <input
           type="text"
           name="message"
           value={formData.message}
           onChange={onFormChange}
         ></input>
-        <input type="submit" value="Add Card"></input>
+        <input
+          type="submit"
+          value={
+            formData.message.length >= 140 ? "Message too long" : "Add Card"
+          }
+          disabled={!formData.message || formData.message.length >= 140}
+        ></input>
       </form>
     </section>
   );

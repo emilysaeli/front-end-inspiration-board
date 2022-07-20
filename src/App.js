@@ -13,6 +13,41 @@ function App() {
   const [currentBoard, setCurrentBoard] = useState(null);
   const [currentTitle, setCurrentTitle] = useState(null);
   const [currentOwner, setCurrentOwner] = useState(null);
+  const [apiError, setApiError] = useState(null);
+
+  // array of card objects
+  const [cardData, setCardData] = useState([]);
+
+  // array of board objects
+  const [boardData, setBoardData] = useState([]);
+
+  const [cardSort, setCardSort] = useState("id");
+  const sortFunctions = {
+    id: (a, b) => {
+      return a.card_id === b.card_id ? 0 : a.card_id < b.card_id ? -1 : 1;
+    },
+    message: (a, b) => {
+      return a.message.toUpperCase() === b.message.toUpperCase()
+        ? 0
+        : a.message.toUpperCase() < b.message.toUpperCase()
+        ? -1
+        : 1;
+    },
+    likes: (a, b) => {
+      return a.likes === b.likes ? 0 : a.likes > b.likes ? -1 : 1;
+    },
+  };
+
+  const updateSortBy = (value) => {
+    setCardSort(value);
+    console.log(`the value passed in was ${value}`);
+    // console.log(`the state is ${cardSort}`);
+    console.log(sortFunctions[value]);
+    const newCards = [...cardData];
+    newCards.sort(sortFunctions[value]);
+    console.log(newCards);
+    setCardData(newCards);
+  };
 
   const updateCurrentBoard = (id) => {
     axios
@@ -29,6 +64,8 @@ function App() {
         });
         setCurrentTitle(title);
         setCurrentOwner(owner);
+
+        cards.sort(sortFunctions[cardSort]);
         setCardData(cards);
       })
       .catch((error) => {
@@ -36,8 +73,6 @@ function App() {
       });
     setCurrentBoard(id);
   };
-
-  const [boardData, setBoardData] = useState([]);
 
   const getAllBoards = () => {
     axios
@@ -70,8 +105,6 @@ function App() {
       });
   };
 
-  const [cardData, setCardData] = useState([]);
-
   const addCardData = (cardInfo) => {
     console.log("adding card");
     // cardInfo: {"message":msg}
@@ -82,8 +115,9 @@ function App() {
         updateCurrentBoard(currentBoard);
         console.log(res);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        setApiError(err.message);
+        console.error(err.message);
       });
   };
 
@@ -114,10 +148,12 @@ function App() {
         console.log(err);
       });
   };
+
   const [boardFormVisible, setBoardFormVisible] = useState(true);
   const toggleFormVisible = () => {
     setBoardFormVisible(!boardFormVisible);
   };
+
   const deleteCard = (cardID) => {
     axios
       .delete(`${BACKENDURL}/cards/${cardID}`)
@@ -189,6 +225,7 @@ function App() {
           deleteCallback={deleteBoard}
           addCardCallback={addCardData}
           deleteCardCallback={deleteCard}
+          cardSortCallback={updateSortBy}
         />
 
         <NewBoardForm
